@@ -1,33 +1,3835 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es" class="h-full bg-slate-50"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center; /* Centrado horizontal */
-            align-items: center;     /* Centrado vertical */
-            height: 100vh;           /* Usa todo el alto de la pantalla */
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5; /* Un fondo gris claro suave */
-            color: #333;               /* Color del texto */
+    <title>Generador de Reporte Moodle - SBAP</title>
+    <!-- Tailwind CSS para diseño moderno, responsivo y elegante -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Iconos profesionales de Lucide -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#16a34a',
+                            800: '#166534',
+                            900: '#14532d',
+                            sbap: '#134e4a', // Verde bosque SBAP
+                            gold: '#b45309'  // Dorado premium para certificados y aprobaciones
+                        }
+                    }
+                }
+            }
         }
-        
-        .mensaje {
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .scroll-custom::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .scroll-custom::-webkit-scrollbar-track {
+            background: #f1f5f9;
+            border-radius: 4px;
+        }
+        .scroll-custom::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        .scroll-custom::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
     </style>
-</head>
-<body>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0px}.inset-y-0{top:0px;bottom:0px}.left-0{left:0px}.top-0{top:0px}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.ml-2{margin-left:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-12{margin-top:3rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.hidden{display:none}.h-10{height:2.5rem}.h-11{height:2.75rem}.h-12{height:3rem}.h-14{height:3.5rem}.h-20{height:5rem}.h-4{height:1rem}.h-5{height:1.25rem}.h-6{height:1.5rem}.h-full{height:100%}.max-h-\[90vh\]{max-height:90vh}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-12{width:3rem}.w-4{width:1rem}.w-5{width:1.25rem}.w-56{width:14rem}.w-6{width:1.5rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-7xl{max-width:80rem}.flex-1{flex:1 1 0%}.border-collapse{border-collapse:collapse}.cursor-pointer{cursor:pointer}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-4 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(1rem * var(--tw-space-x-reverse));margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.divide-y > :not([hidden]) ~ :not([hidden]){--tw-divide-y-reverse:0;border-top-width:calc(1px * calc(1 - var(--tw-divide-y-reverse)));border-bottom-width:calc(1px * var(--tw-divide-y-reverse))}.divide-slate-100 > :not([hidden]) ~ :not([hidden]){--tw-divide-opacity:1;border-color:rgb(241 245 249 / var(--tw-divide-opacity, 1))}.self-start{align-self:flex-start}.overflow-hidden{overflow:hidden}.overflow-x-auto{overflow-x:auto}.overflow-y-auto{overflow-y:auto}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:0.5rem}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-b-4{border-bottom-width:4px}.border-l{border-left-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-amber-200\/80{border-color:rgb(253 230 138 / 0.8)}.border-brand-gold{--tw-border-opacity:1;border-color:rgb(180 83 9 / var(--tw-border-opacity, 1))}.border-slate-100{--tw-border-opacity:1;border-color:rgb(241 245 249 / var(--tw-border-opacity, 1))}.border-slate-200{--tw-border-opacity:1;border-color:rgb(226 232 240 / var(--tw-border-opacity, 1))}.border-teal-800{--tw-border-opacity:1;border-color:rgb(17 94 89 / var(--tw-border-opacity, 1))}.bg-amber-100{--tw-bg-opacity:1;background-color:rgb(254 243 199 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-amber-600{--tw-bg-opacity:1;background-color:rgb(217 119 6 / var(--tw-bg-opacity, 1))}.bg-blue-50{--tw-bg-opacity:1;background-color:rgb(239 246 255 / var(--tw-bg-opacity, 1))}.bg-brand-sbap{--tw-bg-opacity:1;background-color:rgb(19 78 74 / var(--tw-bg-opacity, 1))}.bg-emerald-50{--tw-bg-opacity:1;background-color:rgb(236 253 245 / var(--tw-bg-opacity, 1))}.bg-purple-50{--tw-bg-opacity:1;background-color:rgb(250 245 255 / var(--tw-bg-opacity, 1))}.bg-rose-50{--tw-bg-opacity:1;background-color:rgb(255 241 242 / var(--tw-bg-opacity, 1))}.bg-slate-100{--tw-bg-opacity:1;background-color:rgb(241 245 249 / var(--tw-bg-opacity, 1))}.bg-slate-200{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.bg-slate-50{--tw-bg-opacity:1;background-color:rgb(248 250 252 / var(--tw-bg-opacity, 1))}.bg-slate-900\/60{background-color:rgb(15 23 42 / 0.6)}.bg-teal-50{--tw-bg-opacity:1;background-color:rgb(240 253 250 / var(--tw-bg-opacity, 1))}.bg-teal-950{--tw-bg-opacity:1;background-color:rgb(4 47 46 / var(--tw-bg-opacity, 1))}.bg-teal-950\/40{background-color:rgb(4 47 46 / 0.4)}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-emerald-50\/50{background-color:rgb(236 253 245 / 0.5)}.bg-emerald-100{--tw-bg-opacity:1;background-color:rgb(209 250 229 / var(--tw-bg-opacity, 1))}.object-contain{object-fit:contain}.p-1{padding:0.25rem}.p-1\.5{padding:0.375rem}.p-2{padding:0.5rem}.p-3{padding:0.75rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.pl-3{padding-left:0.75rem}.pl-4{padding-left:1rem}.pl-9{padding-left:2.25rem}.pr-4{padding-right:1rem}.pt-4{padding-top:1rem}.text-left{text-align:left}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-amber-600{--tw-text-opacity:1;color:rgb(217 119 6 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-blue-600{--tw-text-opacity:1;color:rgb(37 99 235 / var(--tw-text-opacity, 1))}.text-brand-sbap{--tw-text-opacity:1;color:rgb(19 78 74 / var(--tw-text-opacity, 1))}.text-emerald-200{--tw-text-opacity:1;color:rgb(167 243 208 / var(--tw-text-opacity, 1))}.text-emerald-600{--tw-text-opacity:1;color:rgb(5 150 105 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-rose-600{--tw-text-opacity:1;color:rgb(225 29 72 / var(--tw-text-opacity, 1))}.text-slate-200{--tw-text-opacity:1;color:rgb(226 232 240 / var(--tw-text-opacity, 1))}.text-slate-400{--tw-text-opacity:1;color:rgb(148 163 184 / var(--tw-text-opacity, 1))}.text-slate-500{--tw-text-opacity:1;color:rgb(100 116 139 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-slate-700{--tw-text-opacity:1;color:rgb(51 65 85 / var(--tw-text-opacity, 1))}.text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}.text-teal-100{--tw-text-opacity:1;color:rgb(204 251 241 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-emerald-800{--tw-text-opacity:1;color:rgb(6 95 70 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.opacity-50{opacity:0.5}.shadow-inner{--tw-shadow:inset 0 2px 4px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:inset 0 2px 4px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.hover\:border-brand-sbap\/50:hover{border-color:rgb(19 78 74 / 0.5)}.hover\:bg-amber-700:hover{--tw-bg-opacity:1;background-color:rgb(180 83 9 / var(--tw-bg-opacity, 1))}.hover\:bg-brand-900:hover{--tw-bg-opacity:1;background-color:rgb(20 83 45 / var(--tw-bg-opacity, 1))}.hover\:bg-emerald-50\/20:hover{background-color:rgb(236 253 245 / 0.2)}.hover\:bg-slate-200:hover{--tw-bg-opacity:1;background-color:rgb(226 232 240 / var(--tw-bg-opacity, 1))}.hover\:bg-slate-300:hover{--tw-bg-opacity:1;background-color:rgb(203 213 225 / var(--tw-bg-opacity, 1))}.hover\:bg-teal-900:hover{--tw-bg-opacity:1;background-color:rgb(19 78 74 / var(--tw-bg-opacity, 1))}.hover\:text-brand-sbap:hover{--tw-text-opacity:1;color:rgb(19 78 74 / var(--tw-text-opacity, 1))}.hover\:text-white:hover{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.focus\:border-brand-sbap:focus{--tw-border-opacity:1;border-color:rgb(19 78 74 / var(--tw-border-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.focus\:ring-brand-sbap\/20:focus{--tw-ring-color:rgb(19 78 74 / 0.2)}.disabled\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\:opacity-50:disabled{opacity:0.5}.group:hover .group-hover\:text-brand-sbap{--tw-text-opacity:1;color:rgb(19 78 74 / var(--tw-text-opacity, 1))}.group:hover .group-hover\:text-slate-800{--tw-text-opacity:1;color:rgb(30 41 59 / var(--tw-text-opacity, 1))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:flex-row{flex-direction:row}.sm\:p-6{padding:1.5rem}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}}@media (min-width: 768px){.md\:max-w-md{max-width:28rem}.md\:flex-row{flex-direction:row}.md\:items-center{align-items:center}.md\:justify-between{justify-content:space-between}.md\:self-auto{align-self:auto}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.lg\:p-8{padding:2rem}.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (min-width: 1280px){.xl\:grid-cols-6{grid-template-columns:repeat(6, minmax(0, 1fr))}}</style></head>
+<body class="flex flex-col min-h-screen text-slate-800 antialiased">
 
-    <div class="mensaje">
-        --- Información no disponible ---
+    <!-- ESTADO 1: INTERFAZ DEL GENERADOR (Se muestra solo si no hay datos embebidos) -->
+    <div id="setup-view" class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-2xl w-full mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+            <!-- Header del Generador -->
+            <div class="bg-brand-sbap p-8 text-white text-center border-b-4 border-brand-gold">
+                <div class="inline-block bg-white p-3 rounded-2xl shadow-md mb-4">
+                    <img src="https://files.catbox.moe/rl7xn6.png" alt="SBAP Logo" class="h-14 object-contain">
+                </div>
+                <h1 class="text-2xl font-extrabold tracking-tight">Creador de Dashboard de Alumnos</h1>
+                <p class="text-emerald-200 text-sm mt-1">Sube los reportes extraídos de Moodle para generar el informe final del cliente (Detección Inteligente Adaptativa)</p>
+            </div>
+
+            <!-- Formularios de Carga -->
+            <div class="p-8 space-y-6">
+                <!-- Paso 1: Participantes -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-slate-700 flex items-center space-x-2">
+                        <span class="w-6 h-6 bg-brand-sbap text-white rounded-full flex items-center justify-center text-xs">1</span>
+                        <span>Archivo de Participantes (CSV)</span>
+                    </label>
+                    <div id="dropzone-participants" class="border-2 border-dashed border-slate-200 hover:border-brand-sbap/50 rounded-2xl p-6 text-center cursor-pointer bg-slate-50 hover:bg-emerald-50/20 transition-all group">
+                        <input type="file" id="file-participants" accept=".csv" class="hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" class="lucide lucide-users w-10 h-10 mx-auto text-slate-400 group-hover:text-brand-sbap transition mb-2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                        <p class="text-sm font-semibold text-slate-600 group-hover:text-slate-800 transition" id="label-participants"><span class="text-emerald-600 font-bold">✓ Carga Exitosa</span> (42 alumnos encontrados)</p>
+                        <p class="text-xs text-slate-400 mt-1">Archivo delimitado por punto y coma (;)</p>
+                    </div>
+                </div>
+
+                <!-- Paso 2: Progreso -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-slate-700 flex items-center space-x-2">
+                        <span class="w-6 h-6 bg-brand-sbap text-white rounded-full flex items-center justify-center text-xs">2</span>
+                        <span>Informe de Finalización de Actividades (CSV)</span>
+                    </label>
+                    <div id="dropzone-progress" class="border-2 border-dashed border-slate-200 hover:border-brand-sbap/50 rounded-2xl p-6 text-center cursor-pointer bg-slate-50 hover:bg-emerald-50/20 transition-all group">
+                        <input type="file" id="file-progress" accept=".csv" class="hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="activity" aria-hidden="true" class="lucide lucide-activity w-10 h-10 mx-auto text-slate-400 group-hover:text-brand-sbap transition mb-2"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"></path></svg>
+                        <p class="text-sm font-semibold text-slate-600 group-hover:text-slate-800 transition" id="label-progress"><span class="text-emerald-600 font-bold">✓ Carga Exitosa</span> (42 registros de avance)</p>
+                        <p class="text-xs text-slate-400 mt-1">Archivo delimitado por tabulaciones (\t)</p>
+                    </div>
+                </div>
+
+                <!-- Estado de Procesamiento -->
+                <div id="status-box" class="p-4 rounded-xl text-sm font-semibold text-center bg-emerald-100 text-emerald-800">¡Ambos archivos listos! Puedes previsualizar o descargar el reporte directamente.</div>
+
+                <!-- Acciones del Generador -->
+                <div class="pt-4 flex flex-col sm:flex-row gap-3">
+                    <button onclick="procesarYPrevisualizar()" class="flex-1 py-3 px-4 bg-brand-sbap hover:bg-brand-900 text-white rounded-xl text-sm font-bold shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" aria-hidden="true" class="lucide lucide-eye w-4 h-4"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        <span>Previsualizar Dashboard</span>
+                    </button>
+                    <button id="btn-descargar-final" onclick="exportarHTMLCliente()" class="flex-1 py-3 px-4 bg-amber-600 hover:bg-amber-700 disabled:opacity-50 disabled:cursor-not-allowed text-white rounded-xl text-sm font-bold shadow-md transition-all flex items-center justify-center space-x-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="download" aria-hidden="true" class="lucide lucide-download w-4 h-4"><path d="M12 15V3"></path><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><path d="m7 10 5 5 5-5"></path></svg>
+                        <span>Descargar para el Cliente</span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-</body>
-</html>
+
+    <!-- ESTADO 2: EL DASHBOARD FINAL PARA EL CLIENTE (Se activa dinámicamente) -->
+    <div id="dashboard-view" class="hidden flex-1 flex flex-col">
+        <!-- Header Principal Corporativo -->
+        <header class="bg-brand-sbap text-white border-b-4 border-brand-gold shadow-md sticky top-0 z-40">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center justify-between h-20">
+                    <!-- Logotipo e Identidad (Limpio y ordenado) -->
+                    <div class="flex items-center space-x-4">
+                        <div class="bg-white p-2 rounded-lg shadow-inner flex items-center justify-center">
+                            <img src="https://files.catbox.moe/rl7xn6.png" alt="SBAP Logo" class="h-11 object-contain">
+                        </div>
+                    </div>
+                    <!-- Volver al generador si estamos en modo editor -->
+                    <button id="btn-volver-generador" onclick="mostrarGenerador()" class="hidden px-4 py-2 bg-teal-950 hover:bg-teal-900 border border-teal-800 text-teal-100 rounded-xl text-xs font-bold transition">
+                        ← Cargar Nuevos Archivos
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Contenido Principal -->
+        <main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-6">
+            
+            <!-- Indicadores Clave de Desempeño (KPIs) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+                <!-- KPI Total Alumnos -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4 transition hover:shadow-md">
+                    <div class="p-3 bg-teal-50 rounded-xl text-brand-sbap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="users" aria-hidden="true" class="lucide lucide-users w-6 h-6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><path d="M16 3.128a4 4 0 0 1 0 7.744"></path><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Alumnos Registrados</p>
+                        <h3 id="kpi-total" class="text-xl font-extrabold text-slate-800 mt-1">--</h3>
+                    </div>
+                </div>
+
+                <!-- KPI Activos -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4 transition hover:shadow-md">
+                    <div class="p-3 bg-emerald-50 rounded-xl text-emerald-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-check" aria-hidden="true" class="lucide lucide-user-check w-6 h-6"><path d="m16 11 2 2 4-4"></path><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Ingresos Activos</p>
+                        <div class="flex items-baseline space-x-2 mt-1">
+                            <h3 id="kpi-activos" class="text-xl font-extrabold text-slate-800">--</h3>
+                            <span id="kpi-activos-porc" class="text-xs font-bold text-emerald-600">(--%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Nunca Ingresaron -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4 transition hover:shadow-md">
+                    <div class="p-3 bg-rose-50 rounded-xl text-rose-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-x" aria-hidden="true" class="lucide lucide-user-x w-6 h-6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="17" x2="22" y1="8" y2="13"></line><line x1="22" x2="17" y1="8" y2="13"></line></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Nunca Ingresaron</p>
+                        <div class="flex items-baseline space-x-2 mt-1">
+                            <h3 id="kpi-nunca" class="text-xl font-extrabold text-slate-800">--</h3>
+                            <span id="kpi-nunca-porc" class="text-xs font-bold text-rose-600">(--%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Encuesta Inscripción -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4 transition hover:shadow-md">
+                    <div class="p-3 bg-blue-50 rounded-xl text-blue-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="clipboard-signature" aria-hidden="true" class="lucide lucide-clipboard-signature w-6 h-6"><rect width="8" height="4" x="8" y="2" rx="1"></rect><path d="M8 4H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-.5"></path><path d="M16 4h2a2 2 0 0 1 1.73 1"></path><path d="M8 18h1"></path><path d="M21.378 12.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"></path></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Encuesta de Inscripción realizada</p>
+                        <div class="flex items-baseline space-x-2 mt-1">
+                            <h3 id="kpi-inscripcion" class="text-xl font-extrabold text-slate-800">--</h3>
+                            <span id="kpi-inscripcion-porc" class="text-xs font-bold text-blue-600">(--%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Encuesta Satisfacción -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4 transition hover:shadow-md">
+                    <div class="p-3 bg-purple-50 rounded-xl text-purple-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="smile" aria-hidden="true" class="lucide lucide-smile w-6 h-6"><path d="M15 10V9"></path><path d="M16.472 15a6 6 0 01-8.943 0"></path><path d="M9 10V9"></path><circle cx="12" cy="12" r="10"></circle></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Encuesta de satisfacción realizada</p>
+                        <div class="flex items-baseline space-x-2 mt-1">
+                            <h3 id="kpi-satisfaccion" class="text-xl font-extrabold text-slate-800">--</h3>
+                            <span id="kpi-satisfaccion-porc" class="text-xs font-bold text-purple-600">(--%)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KPI Certificados -->
+                <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex items-center space-x-4 transition hover:shadow-md">
+                    <div class="p-3 bg-amber-50 rounded-xl text-amber-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="award" aria-hidden="true" class="lucide lucide-award w-6 h-6"><path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path><circle cx="12" cy="8" r="6"></circle></svg>
+                    </div>
+                    <div>
+                        <p class="text-[10px] font-bold text-slate-500 uppercase tracking-wider leading-tight">Certificados emitidos</p>
+                        <div class="flex items-baseline space-x-2 mt-1">
+                            <h3 id="kpi-certificados" class="text-xl font-extrabold text-slate-800">--</h3>
+                            <span id="kpi-certificados-porc" class="text-xs font-bold text-amber-600">(--%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Barra de Control: Buscador y Pestañas -->
+            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <!-- Pestañas (Navegación Limpia) -->
+                <div class="flex p-1 bg-slate-100 rounded-xl space-x-1 self-start md:self-auto">
+                    <button id="tab-btn-accesos" onclick="switchTab('accesos')" class="flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm bg-white text-brand-sbap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="calendar" aria-hidden="true" class="lucide lucide-calendar w-4 h-4"><path d="M8 2v3"></path><path d="M16 2v3"></path><rect x="3" y="3" width="18" height="18" rx="2"></rect><path d="M3 9h18"></path></svg>
+                        <span>Control de Accesos</span>
+                    </button>
+                    <button id="tab-btn-progreso" onclick="switchTab('progreso')" class="flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-brand-sbap">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="graduation-cap" aria-hidden="true" class="lucide lucide-graduation-cap w-4 h-4"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+                        <span>Avance &amp; Certificados</span>
+                    </button>
+                </div>
+
+                <!-- Buscador -->
+                <div class="flex items-center space-x-3 w-full md:max-w-md">
+                    <div class="relative w-full">
+                        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-slate-400 pointer-events-none">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-4 h-4"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+                        </span>
+                        <input type="text" id="searchInput" oninput="applyFilters()" placeholder="Buscar por nombre o correo electrónico..." class="w-full pl-9 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-sbap/20 focus:border-brand-sbap transition-all">
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 1: VISTA DE CONTROL DE ACCESOS -->
+            <section id="section-accesos" class="space-y-4">
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="setAccessSubfilter('todos')" id="sub-acc-todos" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-sbap text-white">
+                        Todos
+                    </button>
+                    <button onclick="setAccessSubfilter('recientes')" id="sub-acc-recientes" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Ingresaron recientemente (&lt; 5 días)
+                    </button>
+                    <button onclick="setAccessSubfilter('alertas')" id="sub-acc-alertas" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Ausentes (&gt; 15 días)
+                    </button>
+                    <button onclick="setAccessSubfilter('nunca')" id="sub-acc-nunca" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Nunca han ingresado
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="overflow-x-auto scroll-custom">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-100 text-slate-500 text-xs font-bold uppercase tracking-wider">
+                                    <th class="py-4 px-6">Alumno</th>
+                                    <th class="py-4 px-6">Contacto</th>
+                                    <th class="py-4 px-6">Último Acceso</th>
+                                    <th class="py-4 px-6">Semáforo de Inactividad</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body-accesos" class="divide-y divide-slate-100 text-sm">
+                                <!-- Dinámico -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="no-results-accesos" class="hidden py-12 text-center text-slate-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-12 h-12 mx-auto mb-3 opacity-50"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+                        <p class="font-medium text-slate-600">No se encontraron alumnos para estos filtros</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: VISTA DE DETALLE DE PROGRESO -->
+            <section id="section-progreso" class="hidden space-y-4">
+                
+                <!-- Bloque superior de Alumnos que nunca han avanzado en nada -->
+                <div id="alert-sin-avance" class="bg-amber-50 border border-amber-200/80 rounded-2xl p-4 flex items-center space-x-3 text-amber-900 shadow-sm">
+                    <div class="p-2 bg-amber-100 rounded-xl text-amber-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="user-x" aria-hidden="true" class="lucide lucide-user-x w-5 h-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="17" x2="22" y1="8" y2="13"></line><line x1="22" x2="17" y1="8" y2="13"></line></svg>
+                    </div>
+                    <div>
+                        <p class="text-sm font-medium">Alumnos inscritos que <span class="font-bold">nunca han avanzado en nada</span>:</p>
+                        <p class="text-lg font-extrabold mt-0.5"><span id="no-progress-count">--</span> alumnos</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="setProgressSubfilter('todos')" id="sub-prog-todos" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-sbap text-white">
+                        Todos
+                    </button>
+                    <button onclick="setProgressSubfilter('certificado')" id="sub-prog-certificado" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Certificado Emitido 🎓
+                    </button>
+                    <button onclick="setProgressSubfilter('en-curso')" id="sub-prog-en-curso" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        En Curso
+                    </button>
+                    <button onclick="setProgressSubfilter('no-iniciado')" id="sub-prog-no-id" class="px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200">
+                        Sin Avances (0%)
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="overflow-x-auto scroll-custom">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 border-b border-slate-100 text-slate-500 text-xs font-bold uppercase tracking-wider">
+                                    <th class="py-4 px-6">Alumno</th>
+                                    <th class="py-4 px-6 w-56">Progreso General</th>
+                                    <th class="py-4 px-6 text-center">%</th>
+                                    <th class="py-4 px-6">Progreso Módulos</th>
+                                    <th class="py-4 px-6 text-center">Certificado</th>
+                                    <th class="py-4 px-6 text-center">Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody id="table-body-progreso" class="divide-y divide-slate-100 text-sm">
+                                <!-- Dinámico -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="no-results-progreso" class="hidden py-12 text-center text-slate-400">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="search" aria-hidden="true" class="lucide lucide-search w-12 h-12 mx-auto mb-3 opacity-50"><path d="m21 21-4.34-4.34"></path><circle cx="11" cy="11" r="8"></circle></svg>
+                        <p class="font-medium text-slate-600">No se encontraron alumnos en este rango</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Modal para ver el Detalle Completo de cada Alumno -->
+    <div id="modal-detalle" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-2xl w-full shadow-xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-brand-sbap text-white px-6 py-5 flex items-center justify-between border-b border-brand-gold">
+                <div>
+                    <h3 id="modal-nombre" class="text-lg font-bold">---</h3>
+                    <p id="modal-email" class="text-xs text-slate-200">---</p>
+                </div>
+                <button onclick="closeModal()" class="text-teal-100 hover:text-white transition bg-teal-950/40 p-1.5 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="x" aria-hidden="true" class="lucide lucide-x w-5 h-5"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto scroll-custom space-y-6 flex-1">
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                    <span class="text-xs text-slate-500 block font-medium">Último acceso registrado:</span>
+                    <strong id="modal-ultimo-acc" class="text-sm text-slate-800">---</strong>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">Detalle Cronológico de Progreso</h4>
+                    <div id="modal-modulos-list" class="relative border-l border-slate-100 pl-4 ml-2 space-y-4">
+                        <!-- Items de progreso dinámicos -->
+                    </div>
+                </div>
+            </div>
+            <div class="bg-slate-50 px-6 py-4 flex justify-end border-t border-slate-100">
+                <button onclick="closeModal()" class="px-5 py-2 bg-slate-200 text-slate-700 text-sm font-semibold rounded-xl hover:bg-slate-300 transition-all">
+                    Cerrar Detalle
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pie de Página -->
+    <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p>© 2026 Ministerio del Medio Ambiente - SBAP. Todos los derechos reservados.</p>
+            <p class="mt-1">Diseñado para la visualización del avance de capacitación del cliente.</p>
+        </div>
+    </footer>
+
+    <!-- Bloque de datos autoinyectados por el propio archivo -->
+    <script>
+        /*DATA_EMBEDDED*/ const ALUMNOS_DATA = [
+  {
+    "nombre": "Mario Alex Alegría",
+    "email": "mario.alegria@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "6 días 1 hora",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 8700,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-26 10:04:05",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 08:02:59"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 08:07:55"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 09:41:42"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 19:15:39"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 19:42:23"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 09:47:38"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 10:03:41"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 10:04:05"
+      }
+    }
+  },
+  {
+    "nombre": "Valeria Almonacid Miranda",
+    "email": "apoyomedioambiente@imcabodehornos.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "1 día 2 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 1560,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-31 08:44:04",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-06-19 08:57:10"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-06-19 09:04:51"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 08:54:19"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-19 15:46:37"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-20 14:19:31"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 13:51:58"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 13:54:40"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 08:44:04"
+      }
+    }
+  },
+  {
+    "nombre": "Ximena Alvarez",
+    "email": "ximena.alvarez@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "20 días 18 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 29880,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-11 16:36:36",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 16:10:12"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 16:14:23"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 14:18:16"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 14:46:49"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 15:52:04"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:32:05"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:34:59"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:36:36"
+      }
+    }
+  },
+  {
+    "nombre": "Hermes Andrade Parada",
+    "email": "h.andrade.parada@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "1 día",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 1440,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-31 10:23:58",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 10:36:58"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 08:42:19"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 08:55:10"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 09:17:30"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 09:36:25"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 10:20:53"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 10:23:36"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 10:23:58"
+      }
+    }
+  },
+  {
+    "nombre": "Michael Arcos",
+    "email": "michael.arcos@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "Nunca",
+    "nunca_ingreso": true,
+    "inactivo_critico": false,
+    "minutos_acceso": 999999,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Michael Arcos Valenzuela",
+    "email": "michael.arcos@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "26 días 3 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 37620,
+    "avance_porcentaje": 25,
+    "modulos_completados_count": 2,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 15:55:04"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 15:58:24"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "luis azocar",
+    "email": "luis.azocar@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "15 días 1 hora",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 21660,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-17 10:06:54",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 13:59:03"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 14:06:17"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 10:59:14"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-14 08:33:13"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-14 14:45:37"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 10:00:56"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 10:05:58"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 10:06:54"
+      }
+    }
+  },
+  {
+    "nombre": "Marcelo Baeza Sequeira",
+    "email": "marcelo.baezasequeira@fao.org",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "2 días 23 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 4260,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-29 12:11:59",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-20 10:33:46"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-20 10:35:39"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-20 11:31:12"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-20 16:34:52"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-20 17:15:47"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 12:04:08"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 12:11:11"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 12:11:59"
+      }
+    }
+  },
+  {
+    "nombre": "GABRIEL BERRIOS PINO",
+    "email": "gabrielberrios@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "24 días 10 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 35160,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Erick Burgos",
+    "email": "eburgos@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "4 días 18 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 6840,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-27 17:08:31",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-07 11:32:55"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-07 11:49:27"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 11:40:24"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 16:51:18"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-27 16:28:48"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-27 17:06:35"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-27 17:08:24"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-27 17:08:31"
+      }
+    }
+  },
+  {
+    "nombre": "Valeria Caballero",
+    "email": "vcaballero@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "3 días 13 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 5100,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-28 21:53:58",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-22 06:10:28"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-22 06:23:16"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-27 21:07:56"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 05:57:17"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 20:13:44"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 21:35:57"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 21:47:06"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 21:53:58"
+      }
+    }
+  },
+  {
+    "nombre": "Sandro Adamir Campos",
+    "email": "sandro.campos@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "Nunca",
+    "nunca_ingreso": true,
+    "inactivo_critico": false,
+    "minutos_acceso": 999999,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Manuel Cano",
+    "email": "mcano@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "14 días 23 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 21540,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-17 11:48:43",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-05 11:12:01"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-05 11:21:24"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 17:16:18"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-14 16:16:51"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-14 16:36:33"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 11:45:37"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 11:48:29"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 11:48:43"
+      }
+    }
+  },
+  {
+    "nombre": "RUBEN ALEXANDER CARMONA TAPIA",
+    "email": "rcarmona@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "28 días",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 40320,
+    "avance_porcentaje": 25,
+    "modulos_completados_count": 2,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 10:07:32"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 10:14:02"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Macarena Ceballo",
+    "email": "macarena.ceballo.v@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "5 días 18 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 8280,
+    "avance_porcentaje": 75,
+    "modulos_completados_count": 6,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 17:42:40"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 10:00:54"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 12:26:46"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 13:22:13"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 14:03:03"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 15:42:33"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Daniela Ana Millaray Cheuque Foitzick",
+    "email": "mcheuquefoitzick@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "7 días 1 hora",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 10140,
+    "avance_porcentaje": 88,
+    "modulos_completados_count": 7,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-21 23:07:44",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-16 20:23:30"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 22:01:28"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 22:31:58"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 22:50:03"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 23:05:41"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 23:07:06"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-21 23:07:44"
+      }
+    }
+  },
+  {
+    "nombre": "Cristelia Corvalán Carvajal",
+    "email": "ccorvalan@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "17 horas 52 minutos",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 1072,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-31 17:22:09",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 11:38:14"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-24 14:09:21"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-24 15:20:55"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 22:13:09"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 14:55:13"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 17:18:46"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 17:21:21"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 17:22:09"
+      }
+    }
+  },
+  {
+    "nombre": "David Diaz",
+    "email": "david.diaz@live.com.ar",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "19 días",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 27360,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-13 08:34:27",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 10:27:04"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 10:30:45"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 10:41:09"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 14:28:19"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 08:22:58"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 08:32:34"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 08:34:21"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 08:34:27"
+      }
+    }
+  },
+  {
+    "nombre": "Paola Escobar Matamala",
+    "email": "pescobar@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "19 horas 42 minutos",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 1182,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-31 15:30:22",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 13:29:15"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 13:49:10"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 12:59:29"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 13:50:51"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 14:30:20"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 15:23:32"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 15:29:51"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 15:30:22"
+      }
+    }
+  },
+  {
+    "nombre": "Katherine Fritz Rivera",
+    "email": "kfritz@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "3 días 23 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 5700,
+    "avance_porcentaje": 25,
+    "modulos_completados_count": 2,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 23:05:13"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 23:10:03"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Rodrigo Gros Pérez",
+    "email": "rgros@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "14 días 18 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 21240,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-17 16:36:28",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 16:34:07"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 16:36:42"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 17:05:43"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 15:46:32"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 16:13:05"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 16:34:10"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 16:36:19"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 16:36:28"
+      }
+    }
+  },
+  {
+    "nombre": "Pilar Mónica Leon Santa Cruz",
+    "email": "pilarmonicaleon@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "28 días",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 40320,
+    "avance_porcentaje": 25,
+    "modulos_completados_count": 2,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 09:23:03"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 09:33:53"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "jean Miranda",
+    "email": "mirandadelau6@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "28 días 17 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 41340,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Cyntia Mizobe Alcivar",
+    "email": "cmizobe@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "3 días 20 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 5520,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-28 14:49:54",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 14:36:32"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 14:42:33"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 11:54:48"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 12:11:46"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 12:55:13"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 14:48:00"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 14:49:42"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 14:49:54"
+      }
+    }
+  },
+  {
+    "nombre": "Paola Valeria Moldenhauer Foitzick",
+    "email": "paola.moldenhauer@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "19 días 22 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 28680,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-12 13:04:26",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 12:29:58"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 12:31:20"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 12:38:57"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 12:49:19"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 12:54:21"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 13:02:39"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 13:04:07"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-12 13:04:26"
+      }
+    }
+  },
+  {
+    "nombre": "Javiera Moreno Guerrero",
+    "email": "jmoreno@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "26 días 20 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 38640,
+    "avance_porcentaje": 13,
+    "modulos_completados_count": 1,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-05 14:49:17"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Francisco Ojeda Ayan",
+    "email": "francisco.ojeda@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "16 días 18 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 24120,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-15 16:47:53",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 10:08:46"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-04 11:48:32"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-07 17:32:33"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-08 11:57:06"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-15 16:27:44"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-15 16:44:29"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-15 16:46:36"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-15 16:47:53"
+      }
+    }
+  },
+  {
+    "nombre": "Fernanda Nancy Olivares Molina",
+    "email": "fernanda@hachsaye.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "1 día 14 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 2280,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-30 20:41:10",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 19:58:32"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 19:59:53"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 20:12:13"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 20:22:20"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 20:31:29"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 20:39:31"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 20:41:01"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 20:41:10"
+      }
+    }
+  },
+  {
+    "nombre": "Italo Pérez",
+    "email": "iperez@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "26 días 23 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 38820,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "José Luis Perez",
+    "email": "jose.perez.vargas@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "Nunca",
+    "nunca_ingreso": true,
+    "inactivo_critico": false,
+    "minutos_acceso": 999999,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Irene Ramirez merida",
+    "email": "irene.ramirez@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "21 días 20 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 31440,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-07 07:54:24",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 07:08:08"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 07:12:26"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 08:10:47"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 11:45:35"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 16:26:41"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-07 07:50:49"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-07 07:53:58"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-07 07:54:24"
+      }
+    }
+  },
+  {
+    "nombre": "Felipe Rivera Pinto",
+    "email": "pillan.rojo@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "15 horas 43 minutos",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 943,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-31 19:29:43",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:30:31"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:02:32"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:08:58"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:13:42"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:18:22"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:26:53"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:29:02"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 19:29:43"
+      }
+    }
+  },
+  {
+    "nombre": "Martina Rojas Schultz",
+    "email": "martinaroschu@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "21 horas 50 minutos",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 1310,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-17 13:18:53",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 07:08:03"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-14 13:16:33"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 08:09:25"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 08:47:52"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 09:22:24"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 10:29:19"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 10:30:05"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 13:18:53"
+      }
+    }
+  },
+  {
+    "nombre": "Diana Rojas Vergara",
+    "email": "dianar.vergara.drv@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "2 días 20 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 4080,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-29 15:02:39",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 17:23:55"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 17:28:59"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 18:01:37"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 19:10:36"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 14:40:43"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 15:00:32"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 15:02:24"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-29 15:02:39"
+      }
+    }
+  },
+  {
+    "nombre": "Coral Romero",
+    "email": "rrhh@altosdecantillana.org",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "2 días",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 2880,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-30 10:36:34",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 16:05:40"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-17 16:07:35"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-18 16:45:44"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-18 17:32:40"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 10:19:03"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 10:34:37"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 10:36:22"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-30 10:36:34"
+      }
+    }
+  },
+  {
+    "nombre": "Ximena Romero Garate",
+    "email": "educacion@altosdecantillana.org",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "17 horas 43 minutos",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 1063,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-31 17:31:41",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 12:08:27"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-26 12:11:56"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-28 14:27:43"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 16:37:36"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 16:52:35"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 17:18:55"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 17:31:13"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-31 17:31:41"
+      }
+    }
+  },
+  {
+    "nombre": "Claudio Rozas Fuentes",
+    "email": "crozas@sbap.gob.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "6 días 22 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 9960,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-25 12:24:01",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 14:01:32"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 14:09:26"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-13 17:23:18"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-14 16:13:29"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-24 17:27:02"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 12:20:37"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 12:23:03"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-25 12:24:01"
+      }
+    }
+  },
+  {
+    "nombre": "Mauricio Ruiz",
+    "email": "mauricio.ruiz@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "Nunca",
+    "nunca_ingreso": true,
+    "inactivo_critico": false,
+    "minutos_acceso": 999999,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Devora Sanchez",
+    "email": "devora.sanchez@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "25 días 18 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 37080,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-06 12:45:14",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 08:40:13"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 08:42:17"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 10:30:00"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 11:28:22"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 12:10:56"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 12:43:13"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 12:44:58"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 12:45:14"
+      }
+    }
+  },
+  {
+    "nombre": "Catalina del Pilar Valencia",
+    "email": "catalina.valencia@conaf.cl",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "Nunca",
+    "nunca_ingreso": true,
+    "inactivo_critico": false,
+    "minutos_acceso": 999999,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  },
+  {
+    "nombre": "Daniel Vicente",
+    "email": "dvicentep@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "1 hora 8 minutos",
+    "nunca_ingreso": false,
+    "inactivo_critico": false,
+    "minutos_acceso": 68,
+    "avance_porcentaje": 100,
+    "modulos_completados_count": 8,
+    "modulos_totales": 8,
+    "tiene_certificado": true,
+    "fecha_certificado": "2026-08-11 16:40:07",
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-05 09:03:57"
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-05 09:08:56"
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-06 12:40:06"
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-10 17:50:57"
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:21:27"
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:38:29"
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:39:57"
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Completado",
+        "finalizado": true,
+        "fecha": "2026-08-11 16:40:07"
+      }
+    }
+  },
+  {
+    "nombre": "Marcela Villarroel",
+    "email": "biosubsole@gmail.com",
+    "grupo": "AGOSTO",
+    "ultimo_acceso": "22 días 19 horas",
+    "nunca_ingreso": false,
+    "inactivo_critico": true,
+    "minutos_acceso": 32820,
+    "avance_porcentaje": 0,
+    "modulos_completados_count": 0,
+    "modulos_totales": 8,
+    "tiene_certificado": false,
+    "fecha_certificado": null,
+    "detalle_modulos": {
+      "programa": {
+        "nombre_moodle": "Programa del curso",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "inscripcion": {
+        "nombre_moodle": "Encuesta de Inscripción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m1": {
+        "nombre_moodle": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m2": {
+        "nombre_moodle": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m3": {
+        "nombre_moodle": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "m4": {
+        "nombre_moodle": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "satisfaccion": {
+        "nombre_moodle": "Encuesta de satisfacción",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      },
+      "certificado": {
+        "nombre_moodle": "Certificado",
+        "estado": "Pendiente",
+        "finalizado": false,
+        "fecha": null
+      }
+    }
+  }
+];
+        window.ACTIVITIES_DETECTED = [
+  {
+    "key": "programa",
+    "originalHeader": "Programa del curso",
+    "dateHeader": "col_3",
+    "label": "Programa"
+  },
+  {
+    "key": "inscripcion",
+    "originalHeader": "Encuesta de Inscripción",
+    "dateHeader": "col_5",
+    "label": "Encuesta de Inscripción"
+  },
+  {
+    "key": "m1",
+    "originalHeader": "M1 - Generalidades y fundamentos de la prevención de riesgos orientados a áreas protegidas",
+    "dateHeader": "col_7",
+    "label": "M1"
+  },
+  {
+    "key": "m2",
+    "originalHeader": "M2 - Actividades riesgos y medidas preventivas en áreas protegidas",
+    "dateHeader": "col_9",
+    "label": "M2"
+  },
+  {
+    "key": "m3",
+    "originalHeader": "M3 - Riesgos inherentes a la gestión en áreas protegidas",
+    "dateHeader": "col_11",
+    "label": "M3"
+  },
+  {
+    "key": "m4",
+    "originalHeader": "M4 - Riesgos mayores de origen antrópicos y o naturales en áreas protegidas",
+    "dateHeader": "col_13",
+    "label": "M4"
+  },
+  {
+    "key": "satisfaccion",
+    "originalHeader": "Encuesta de satisfacción",
+    "dateHeader": "col_15",
+    "label": "Encuesta de Satisfacción"
+  },
+  {
+    "key": "certificado",
+    "originalHeader": "Certificado",
+    "dateHeader": "col_17",
+    "label": "Certificado"
+  }
+]; /*DATA_EMBEDDED*/
+    </script>
+
+    <!-- Lógica JavaScript del Generador e Interfaz -->
+    <script>
+        let parsedParticipants = null;
+        let parsedProgress = null;
+        let activeTab = 'accesos';
+        let subfilterAccesos = 'todos';
+        let subfilterProgreso = 'todos';
+        
+        // Estructura para registrar los campos reales del curso actual tras analizar las cabeceras
+        window.ACTIVITIES_DETECTED = [];
+
+        // Ejecución inmediata al iniciar
+        window.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            
+            // Si el archivo ya tiene datos embebidos (es el que le enviamos al cliente)
+            if (Array.isArray(ALUMNOS_DATA) && ALUMNOS_DATA.length > 0) {
+                document.getElementById('setup-view').classList.add('hidden');
+                document.getElementById('dashboard-view').classList.remove('hidden');
+                document.getElementById('btn-volver-generador').classList.add('hidden');
+                inicializarDashboard(ALUMNOS_DATA);
+            } else {
+                // Si está vacío, mostramos el generador para cargar los CSVs
+                document.getElementById('setup-view').classList.remove('hidden');
+                document.getElementById('dashboard-view').classList.add('hidden');
+                inicializarGenerador();
+            }
+        });
+
+        // ==========================================
+        // PROCESADOR Y PARSEO DE CSVs (Paso 1 y 2)
+        // ==========================================
+        function inicializarGenerador() {
+            setupDragAndDrop('dropzone-participants', 'file-participants', (data) => {
+                parsedParticipants = parseParticipantsCSV(data);
+                document.getElementById('label-participants').innerHTML = `<span class="text-emerald-600 font-bold">✓ Carga Exitosa</span> (${parsedParticipants.length} alumnos encontrados)`;
+                verificarArchivosListos();
+            });
+
+            setupDragAndDrop('dropzone-progress', 'file-progress', (data) => {
+                parsedProgress = parseProgressCSV(data);
+                document.getElementById('label-progress').innerHTML = `<span class="text-emerald-600 font-bold">✓ Carga Exitosa</span> (${parsedProgress.length} registros de avance)`;
+                verificarArchivosListos();
+            });
+        }
+
+        function setupDragAndDrop(zoneId, inputId, callback) {
+            const zone = document.getElementById(zoneId);
+            const input = document.getElementById(inputId);
+
+            zone.addEventListener('click', () => input.click());
+            input.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    leerArchivo(e.target.files[0], callback);
+                }
+            });
+
+            zone.addEventListener('dragover', (e) => { e.preventDefault(); zone.classList.add('bg-emerald-50/50'); });
+            zone.addEventListener('dragleave', () => { zone.classList.remove('bg-emerald-50/50'); });
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('bg-emerald-50/50');
+                if (e.dataTransfer.files.length > 0) {
+                    leerArchivo(e.dataTransfer.files[0], callback);
+                }
+            });
+        }
+
+        function leerArchivo(file, callback) {
+            const reader = new FileReader();
+            reader.onload = (e) => callback(e.target.result);
+            reader.readAsText(file, 'UTF-8');
+        }
+
+        // Parseador simple y seguro de CSV de Participantes (delimitado por ;)
+        function parseParticipantsCSV(text) {
+            const lines = text.split(/\r?\n/);
+            const results = [];
+            for (let i = 0; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                
+                // Ignorar filas que no representan a un alumno real (como controles de página de Moodle)
+                if (line.includes("Mostrar 20 por página") || line.includes("por página") || line.toLowerCase().startsWith("seleccionar 'seleccionar'")) {
+                    continue;
+                }
+
+                const cols = line.split(';');
+                if (cols.length < 6) continue;
+                
+                const email = cols[2] ? cols[2].trim().toLowerCase() : '';
+                // No procesar si no posee un correo electrónico válido
+                if (!email || !email.includes('@')) continue;
+
+                results.push({
+                    selection: cols[0],
+                    nameRaw: cols[1],
+                    email: email,
+                    role: cols[3] ? cols[3].replace(/\xa0/g, ' ').trim() : '',
+                    group: cols[4] ? cols[4].replace(/\xa0/g, ' ').trim() : '',
+                    lastAccess: cols[5] ? cols[5].trim() : '',
+                    status: cols[6] ? cols[6].trim() : ''
+                });
+            }
+            return results;
+        }
+
+        // Parseador simple de CSV de Progreso (delimitado por Tabulado)
+        function parseProgressCSV(text) {
+            const lines = text.split(/\r?\n/);
+            if (lines.length < 2) return [];
+            
+            // Detectar cabecera para mapear posiciones
+            const header = lines[0].split('\t').map(h => h.replace(/"/g, '').trim());
+            const results = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const line = lines[i].trim();
+                if (!line) continue;
+                const cols = line.split('\t').map(c => c.replace(/"/g, '').trim());
+                if (cols.length < 2) continue;
+
+                // Crear un objeto mapeando cabecera -> columna
+                const item = {};
+                header.forEach((colName, index) => {
+                    item[colName || `col_${index}`] = cols[index] || '';
+                });
+                results.push({
+                    raw: item,
+                    nombre: cols[0],
+                    email: cols[1] ? cols[1].toLowerCase().trim() : ''
+                });
+            }
+            return results;
+        }
+
+        function verificarArchivosListos() {
+            const btnDescarga = document.getElementById('btn-descargar-final');
+            const statusBox = document.getElementById('status-box');
+            
+            if (parsedParticipants && parsedProgress) {
+                btnDescarga.removeAttribute('disabled');
+                statusBox.className = "p-4 rounded-xl text-sm font-semibold text-center bg-emerald-100 text-emerald-800";
+                statusBox.textContent = "¡Ambos archivos listos! Puedes previsualizar o descargar el reporte directamente.";
+                statusBox.classList.remove('hidden');
+            }
+        }
+
+        // Analizador de cabeceras dinámico usando Expresiones Regulares Inteligentes
+        function detectarActividadesDinamicamente(keys) {
+            const list = [];
+            for (let i = 2; i < keys.length; i++) {
+                const col = keys[i];
+                // Descartar columnas técnicas de Moodle
+                if (!col || col.startsWith("col_") || col.toLowerCase().startsWith("unnamed") || col === "Dirección de correo") {
+                    continue;
+                }
+                
+                // Moodle coloca la columna de fecha inmediatamente en la posición contigua
+                const dateCol = (i + 1 < keys.length) ? keys[i + 1] : null;
+                
+                let key = "modulo_generico_" + i;
+                let label = col;
+                const lowerCol = col.toLowerCase().trim();
+                
+                // Clasificación adaptativa por expresiones regulares y similitud fonética/semántica
+                if (lowerCol.includes("programa") && lowerCol.includes("curso")) {
+                    key = "programa";
+                    label = "Programa";
+                } else if (lowerCol.includes("inscrip") && (lowerCol.includes("encuesta") || lowerCol.includes("formulario") || lowerCol.includes("registro"))) {
+                    key = "inscripcion";
+                    label = "Encuesta de Inscripción";
+                } else if (lowerCol.includes("satisfac")) {
+                    key = "satisfaccion";
+                    label = "Encuesta de Satisfacción";
+                } else if (lowerCol.includes("certif")) {
+                    key = "certificado";
+                    label = "Certificado";
+                } else if (lowerCol.includes("evalua")) {
+                    key = "evaluacion";
+                    label = "Evaluación de conocimientos";
+                } else if (/\bm1\b/i.test(lowerCol) || /m1\s*-/i.test(lowerCol) || lowerCol.startsWith("m1")) {
+                    key = "m1";
+                    label = "M1";
+                } else if (/\bm2\b/i.test(lowerCol) || /m2\s*-/i.test(lowerCol) || lowerCol.startsWith("m2")) {
+                    key = "m2";
+                    label = "M2";
+                } else if (/\bm3\b/i.test(lowerCol) || /m3\s*-/i.test(lowerCol) || lowerCol.startsWith("m3")) {
+                    key = "m3";
+                    label = "M3";
+                } else if (/\bm4\b/i.test(lowerCol) || /m4\s*-/i.test(lowerCol) || lowerCol.startsWith("m4")) {
+                    key = "m4";
+                    label = "M4";
+                } else if (/\bm5\b/i.test(lowerCol) || /m5\s*-/i.test(lowerCol) || lowerCol.startsWith("m5")) {
+                    key = "m5";
+                    label = "M5";
+                }
+                
+                list.push({
+                    key: key,
+                    originalHeader: col,
+                    dateHeader: dateCol,
+                    label: label
+                });
+                
+                // Saltarse la columna de la fecha para el siguiente bucle
+                i++;
+            }
+            return list;
+        }
+
+        // Cruce de información de ambos CSVs en un único JSON consolidado con Detección Automática
+        function procesarDatosConsolidados() {
+            if (!parsedParticipants || !parsedProgress || parsedProgress.length === 0) return null;
+
+            // 1. Detectar las actividades del curso actual dinámicamente analizando las cabeceras del archivo de progreso
+            const headerKeys = Object.keys(parsedProgress[0].raw);
+            window.ACTIVITIES_DETECTED = detectarActividadesDinamicamente(headerKeys);
+
+            // Mapear participantes por email para agilizar la búsqueda
+            const partMap = {};
+            parsedParticipants.forEach(p => {
+                if (p.email) {
+                    partMap[p.email] = p;
+                }
+            });
+
+            const alumnosFinales = [];
+
+            // Procesar el avance y cruzar
+            parsedProgress.forEach(prog => {
+                const email = prog.email;
+                if (!email) return;
+
+                const partInfo = partMap[email] || {
+                    group: 'N/A',
+                    lastAccess: 'Nunca ha ingresado',
+                    status: 'Desconocido'
+                };
+
+                const rawObj = prog.raw;
+                const detalleModulos = {};
+                let completadosCount = 0;
+                
+                // Mapear el estado real de cada actividad detectada
+                window.ACTIVITIES_DETECTED.forEach(act => {
+                    const estadoVal = rawObj[act.originalHeader] || "No finalizado";
+                    const fechaVal = act.dateHeader ? (rawObj[act.dateHeader] || "") : "";
+                    
+                    const lowerEstado = estadoVal.toLowerCase().trim();
+                    // Filtro corrector estricto: Debe decir finalizado o aprobado pero NO empezar con "no" (evita falsos positivos como "No finalizado")
+                    const esFinalizado = (lowerEstado.includes('finalizado') || lowerEstado.includes('aprobado') || lowerEstado.includes('completado')) && !lowerEstado.startsWith('no');
+                    
+                    if (esFinalizado) {
+                        completadosCount++;
+                    }
+
+                    detalleModulos[act.key] = {
+                        nombre_moodle: act.originalHeader,
+                        estado: esFinalizado ? "Completado" : "Pendiente",
+                        finalizado: esFinalizado,
+                        fecha: fechaVal || null
+                    };
+                });
+
+                // Calcular minutos transcurridos para el semáforo
+                const accesoStr = partInfo.lastAccess.toLowerCase();
+                let minutosTotales = 999999;
+                let inactivoCritico = false;
+                let nuncaIngreso = accesoStr.includes('nunca') || accesoStr.includes('sin datos');
+
+                if (!nuncaIngreso) {
+                    const diasMatch = accesoStr.match(/(\d+)\s*día/);
+                    const horasMatch = accesoStr.match(/(\d+)\s*hora/);
+                    const minsMatch = accesoStr.match(/(\d+)\s*minuto/);
+                    
+                    minutosTotales = 0;
+                    if (diasMatch) minutosTotales += parseInt(diasMatch[1]) * 24 * 60;
+                    if (horasMatch) minutosTotales += parseInt(horasMatch[1]) * 60;
+                    if (minsMatch) minutosTotales += parseInt(minsMatch[1]);
+                    
+                    if (minutosTotales > 21600) {
+                        inactivoCritico = true;
+                    }
+                }
+
+                // El porcentaje de avance se autocalcula usando el divisor real de actividades encontradas en este archivo
+                const totalActividades = window.ACTIVITIES_DETECTED.length;
+                const porcentajeAvance = totalActividades > 0 ? Math.round((completadosCount / totalActividades) * 100) : 0;
+
+                alumnosFinales.push({
+                    nombre: prog.nombre,
+                    email: email,
+                    grupo: partInfo.group || 'N/A',
+                    ultimo_acceso: partInfo.lastAccess,
+                    nunca_ingreso: nuncaIngreso,
+                    inactivo_critico: inactivoCritico,
+                    minutos_acceso: minutosTotales,
+                    avance_porcentaje: porcentajeAvance,
+                    modulos_completados_count: completadosCount,
+                    modulos_totales: totalActividades,
+                    tiene_certificado: detalleModulos["certificado"] ? detalleModulos["certificado"].finalizado : false,
+                    fecha_certificado: detalleModulos["certificado"] ? detalleModulos["certificado"].fecha : null,
+                    detalle_modulos: detalleModulos
+                });
+            });
+
+            return alumnosFinales;
+        }
+
+        // Obtener la estructura del curso de manera adaptativa (útil al iniciar con datos embebidos del cliente)
+        function obtenerActividadesEstructura(datos) {
+            if (!datos || datos.length === 0) return [];
+            if (window.ACTIVITIES_DETECTED && window.ACTIVITIES_DETECTED.length > 0) {
+                return window.ACTIVITIES_DETECTED;
+            }
+            
+            // Reconstruir desde los datos cargados del cliente (embebido)
+            const primerAlumno = datos[0];
+            const list = [];
+            const llaves = Object.keys(primerAlumno.detalle_modulos);
+            llaves.forEach(k => {
+                const info = primerAlumno.detalle_modulos[k];
+                let label = k.toUpperCase();
+                if (k === "programa") label = "Programa del curso";
+                else if (k === "inscripcion") label = "Encuesta de Inscripción";
+                else if (k === "satisfaccion") label = "Encuesta de Satisfacción";
+                else if (k === "certificado") label = "Certificado";
+                else if (k === "evaluacion") label = "Evaluación de conocimientos";
+                
+                list.push({
+                    key: k,
+                    originalHeader: info.nombre_moodle,
+                    label: label
+                });
+            });
+            window.ACTIVITIES_DETECTED = list;
+            return list;
+        }
+
+        // Previsualizar localmente sin descargar
+        function procesarYPrevisualizar() {
+            const datos = procesarDatosConsolidados();
+            if (!datos) {
+                alert("Por favor, asegúrate de haber cargado correctamente ambos archivos CSV.");
+                return;
+            }
+            window.DYNAMIC_DATA = datos;
+            document.getElementById('setup-view').classList.add('hidden');
+            document.getElementById('dashboard-view').classList.remove('hidden');
+            document.getElementById('btn-volver-generador').classList.remove('hidden');
+            inicializarDashboard(datos);
+        }
+
+        function mostrarGenerador() {
+            document.getElementById('setup-view').classList.remove('hidden');
+            document.getElementById('dashboard-view').classList.add('hidden');
+        }
+
+        // ==========================================
+        // EXPORTACIÓN AUTOMÁTICA DE HTML
+        // ==========================================
+        function exportarHTMLCliente() {
+            const datos = procesarDatosConsolidados();
+            if (!datos) return;
+
+            // Obtener el HTML de la página actual
+            const originalHTML = document.documentElement.outerHTML;
+
+            // Inyectar tanto los datos procesados como el mapa de actividades autodetectadas
+            const dataString = `const ALUMNOS_DATA = ${JSON.stringify(datos, null, 2)};\n        window.ACTIVITIES_DETECTED = ${JSON.stringify(window.ACTIVITIES_DETECTED, null, 2)};`;
+            
+            // Reemplazar la sección de datos embebidos usando Regex
+            let htmlModificado = originalHTML.replace(
+                /\/\*DATA_EMBEDDED\*\/[\s\S]*?\/\*DATA_EMBEDDED\*\//, 
+                `/*DATA_EMBEDDED*/ ${dataString} /*DATA_EMBEDDED*/`
+            );
+
+            // Descargar el archivo HTML
+            const blob = new Blob([htmlModificado], { type: 'text/html;charset=utf-8' });
+            const tempLink = document.createElement('a');
+            tempLink.href = URL.createObjectURL(blob);
+            tempLink.download = 'dashboard_progreso_SBAP.html';
+            document.body.appendChild(tempLink);
+            tempLink.click();
+            document.body.removeChild(tempLink);
+        }
+
+
+        // ==========================================
+        // SISTEMA DE DASHBOARD COMPLETO (CLIENTE)
+        // ==========================================
+        let renderData = [];
+
+        function inicializarDashboard(datos) {
+            renderData = datos;
+            obtenerActividadesEstructura(datos);
+            calcularKPIs(datos);
+            renderTables();
+        }
+
+        function calcularKPIs(datos) {
+            const total = datos.length;
+            const inactivos = datos.filter(a => a.nunca_ingreso).length;
+            const activos = total - inactivos;
+            const certificados = datos.filter(a => a.tiene_certificado).length;
+
+            // Cálculos para encuestas de Inscripción y Satisfacción con guardado adaptativo (en caso de que no existan en el curso)
+            const inscripciones = datos.filter(a => a.detalle_modulos.inscripcion && a.detalle_modulos.inscripcion.finalizado).length;
+            const satisfacciones = datos.filter(a => a.detalle_modulos.satisfaccion && a.detalle_modulos.satisfaccion.finalizado).length;
+
+            // Cálculo dinámico de alumnos sin avance (avance_porcentaje === 0)
+            const sinAvancesTotal = datos.filter(a => a.avance_porcentaje === 0).length;
+
+            document.getElementById('kpi-total').textContent = total;
+            
+            document.getElementById('kpi-activos').textContent = activos;
+            document.getElementById('kpi-activos-porc').textContent = `(${Math.round((activos/total)*100)}%)`;
+
+            document.getElementById('kpi-nunca').textContent = inactivos;
+            document.getElementById('kpi-nunca-porc').textContent = `(${Math.round((inactivos/total)*100)}%)`;
+
+            document.getElementById('kpi-inscripcion').textContent = inscripciones;
+            document.getElementById('kpi-inscripcion-porc').textContent = `(${Math.round((inscripciones/total)*100)}%)`;
+
+            document.getElementById('kpi-satisfaccion').textContent = satisfacciones;
+            document.getElementById('kpi-satisfaccion-porc').textContent = `(${Math.round((satisfacciones/total)*100)}%)`;
+
+            document.getElementById('kpi-certificados').textContent = certificados;
+            document.getElementById('kpi-certificados-porc').textContent = `(${Math.round((certificados/total)*100)}%)`;
+
+            // Mostrar el bloque superior con el recuento real
+            document.getElementById('no-progress-count').textContent = sinAvancesTotal;
+        }
+
+        function switchTab(tab) {
+            activeTab = tab;
+            const btnAcc = document.getElementById('tab-btn-accesos');
+            const btnProg = document.getElementById('tab-btn-progreso');
+            const secAcc = document.getElementById('section-accesos');
+            const secProg = document.getElementById('section-progreso');
+
+            if (tab === 'accesos') {
+                btnAcc.className = "flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm bg-white text-brand-sbap";
+                btnProg.className = "flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-brand-sbap";
+                secAcc.classList.remove('hidden');
+                secProg.classList.add('hidden');
+            } else {
+                btnProg.className = "flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 shadow-sm bg-white text-brand-sbap";
+                btnAcc.className = "flex items-center space-x-2 px-4 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 hover:text-brand-sbap";
+                secProg.classList.remove('hidden');
+                secAcc.classList.add('hidden');
+            }
+            renderTables();
+        }
+
+        function setAccessSubfilter(val) {
+            subfilterAccesos = val;
+            const subfilters = ['todos', 'recientes', 'alertas', 'nunca'];
+            subfilters.forEach(f => {
+                const btn = document.getElementById(`sub-acc-${f}`);
+                if (f === val) {
+                    btn.className = "px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-sbap text-white";
+                } else {
+                    btn.className = "px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200";
+                }
+            });
+            renderTables();
+        }
+
+        function setProgressSubfilter(val) {
+            subfilterProgreso = val;
+            const subfilters = [
+                ['todos', 'sub-prog-todos'],
+                ['certificado', 'sub-prog-certificado'],
+                ['en-curso', 'sub-prog-en-curso'],
+                ['no-iniciado', 'sub-prog-no-id']
+            ];
+            subfilters.forEach(([key, id]) => {
+                const btn = document.getElementById(id);
+                if (key === val) {
+                    btn.className = "px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-sbap text-white";
+                } else {
+                    btn.className = "px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200";
+                }
+            });
+            renderTables();
+        }
+
+        function applyFilters() {
+            renderTables();
+        }
+
+        function obtenerDatosFiltrados() {
+            const search = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            return renderData.filter(alumno => {
+                const matchesSearch = alumno.nombre.toLowerCase().includes(search) || 
+                                      alumno.email.toLowerCase().includes(search);
+
+                if (!matchesSearch) return false;
+
+                if (activeTab === 'accesos') {
+                    if (subfilterAccesos === 'recientes') {
+                        return alumno.minutos_acceso < 7200; // menor a 5 días
+                    } else if (subfilterAccesos === 'alertas') {
+                        return alumno.inactivo_critico === true;
+                    } else if (subfilterAccesos === 'nunca') {
+                        return alumno.nunca_ingreso === true;
+                    }
+                }
+
+                if (activeTab === 'progreso') {
+                    if (subfilterProgreso === 'certificado') {
+                        return alumno.tiene_certificado === true;
+                    } else if (subfilterProgreso === 'en-curso') {
+                        return alumno.avance_porcentaje > 0 && alumno.avance_porcentaje < 100;
+                    } else if (subfilterProgreso === 'no-iniciado') {
+                        return alumno.avance_porcentaje === 0;
+                    }
+                }
+
+                return true;
+            });
+        }
+
+        function renderTables() {
+            const filtrados = obtenerDatosFiltrados();
+            if (activeTab === 'accesos') {
+                renderAccesos(filtrados);
+            } else {
+                renderProgreso(filtrados);
+            }
+            lucide.createIcons();
+        }
+
+        function renderAccesos(datos) {
+            const tbody = document.getElementById('table-body-accesos');
+            const noResults = document.getElementById('no-results-accesos');
+            tbody.innerHTML = '';
+
+            if (datos.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+            noResults.classList.add('hidden');
+
+            datos.forEach(alumno => {
+                let badgeSemaforo = '';
+                if (alumno.nunca_ingreso) {
+                    badgeSemaforo = `<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-rose-100 text-rose-800"><span class="w-1.5 h-1.5 rounded-full bg-rose-500 mr-1.5"></span>Inactivo Crítico (Nunca)</span>`;
+                } else if (alumno.inactivo_critico) {
+                    badgeSemaforo = `<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800"><span class="w-1.5 h-1.5 rounded-full bg-amber-500 mr-1.5"></span>Ausente (&gt; 15 días)</span>`;
+                } else {
+                    badgeSemaforo = `<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1.5"></span>Activo</span>`;
+                }
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition duration-150 border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="py-4 px-6 font-semibold text-slate-800">${alumno.nombre}</td>
+                    <td class="py-4 px-6 text-slate-500 font-mono text-xs">${alumno.email}</td>
+                    <td class="py-4 px-6 text-slate-600 font-medium">${alumno.ultimo_acceso}</td>
+                    <td class="py-4 px-6">${badgeSemaforo}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function renderProgreso(datos) {
+            const tbody = document.getElementById('table-body-progreso');
+            const noResults = document.getElementById('no-results-progreso');
+            tbody.innerHTML = '';
+
+            if (datos.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            }
+            noResults.classList.add('hidden');
+
+            // Listado de actividades de este curso
+            const actividadesEstructura = window.ACTIVITIES_DETECTED || [];
+
+            datos.forEach(alumno => {
+                const m = alumno.detalle_modulos;
+                
+                // Renderizado dinámico de medallas/badges según la estructura real
+                let badgesHtml = '<div class="flex space-x-1 text-xs">';
+                actividadesEstructura.forEach(act => {
+                    const info = m[act.key];
+                    if (!info) return;
+
+                    let label = "";
+                    let colorClass = "";
+                    
+                    if (act.key === "programa") {
+                        label = "P";
+                        colorClass = info.finalizado ? 'bg-teal-600 text-white shadow-sm' : 'bg-slate-100 text-slate-400 border border-slate-200';
+                    } else if (act.key === "inscripcion") {
+                        label = "I";
+                        colorClass = info.finalizado ? 'bg-blue-500 text-white shadow-sm' : 'bg-slate-100 text-slate-400 border border-slate-200';
+                    } else if (act.key === "satisfaccion") {
+                        label = "S";
+                        colorClass = info.finalizado ? 'bg-purple-500 text-white shadow-sm' : 'bg-slate-100 text-slate-400 border border-slate-200';
+                    } else if (act.key === "evaluacion") {
+                        label = "EV";
+                        colorClass = info.finalizado ? 'bg-indigo-500 text-white shadow-sm' : 'bg-slate-100 text-slate-400 border border-slate-200';
+                    } else if (act.key === "certificado") {
+                        return; // Omitir certificado de las badges chicas porque tiene su propia columna destacada
+                    } else {
+                        // Es un módulo (M1, M2, M3, M4, M5, etc.)
+                        label = act.label.replace("M", "").trim();
+                        colorClass = info.finalizado ? 'bg-emerald-500 text-white shadow-sm' : 'bg-slate-100 text-slate-400 border border-slate-200';
+                    }
+
+                    badgesHtml += `<span title="${act.originalHeader}" class="w-6 h-6 rounded flex items-center justify-center font-bold transition-all ${colorClass}">${label}</span>`;
+                });
+                badgesHtml += '</div>';
+
+                let certHtml = '';
+                if (alumno.tiene_certificado) {
+                    certHtml = `<span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 border border-amber-200 shadow-sm"><i data-lucide="award" class="w-3.5 h-3.5 mr-1 text-amber-600 animate-bounce"></i>Sí</span>`;
+                } else {
+                    certHtml = `<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-400">No emitido</span>`;
+                }
+
+                let barColor = 'bg-rose-500';
+                if (alumno.avance_porcentaje >= 100) barColor = 'bg-amber-500';
+                else if (alumno.avance_porcentaje >= 50) barColor = 'bg-emerald-600';
+                else if (alumno.avance_porcentaje > 0) barColor = 'bg-emerald-400';
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-slate-50/80 transition duration-150 border-b border-slate-100";
+                tr.innerHTML = `
+                    <td class="py-4 px-6">
+                        <div class="font-semibold text-slate-800">${alumno.nombre}</div>
+                        <div class="text-slate-400 text-xs">${alumno.email}</div>
+                    </td>
+                    <td class="py-4 px-6">
+                        <div class="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                            <div class="${barColor} h-full transition-all" style="width: ${alumno.avance_porcentaje}%"></div>
+                        </div>
+                    </td>
+                    <td class="py-4 px-6 text-center font-bold text-slate-700">${alumno.avance_porcentaje}%</td>
+                    <td class="py-4 px-6">${badgesHtml}</td>
+                    <td class="py-4 px-6 text-center">${certHtml}</td>
+                    <td class="py-4 px-6 text-center">
+                        <button onclick="verDetalle('${alumno.email}')" class="inline-flex items-center space-x-1 px-3 py-1.5 bg-brand-sbap text-white hover:bg-brand-900 rounded-lg text-xs font-semibold shadow-sm transition">
+                            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                            <span>Ficha</span>
+                        </button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        function verDetalle(email) {
+            const dataToUse = window.DYNAMIC_DATA || ALUMNOS_DATA;
+            const alumno = dataToUse.find(a => a.email === email);
+            if (!alumno) return;
+
+            document.getElementById('modal-nombre').textContent = alumno.nombre;
+            document.getElementById('modal-email').textContent = alumno.email;
+            document.getElementById('modal-ultimo-acc').textContent = alumno.ultimo_acceso;
+
+            const listContainer = document.getElementById('modal-modulos-list');
+            listContainer.innerHTML = '';
+
+            const actividadesEstructura = window.ACTIVITIES_DETECTED || [];
+
+            actividadesEstructura.forEach(act => {
+                const info = alumno.detalle_modulos[act.key];
+                if (!info) return;
+
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "relative flex items-start space-x-3";
+                
+                let checkIcon = '';
+                let statusText = '';
+                
+                if (info.finalizado) {
+                    checkIcon = `<div class="bg-emerald-500 text-white rounded-full p-0.5 z-10 shadow-sm"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>`;
+                    statusText = `<span class="text-xs text-emerald-600 font-semibold bg-emerald-50 px-2 py-0.5 rounded">Completado el ${info.fecha || 'Sin fecha registrada'}</span>`;
+                } else {
+                    checkIcon = `<div class="bg-slate-100 text-slate-300 rounded-full p-0.5 z-10 border border-slate-200"><i data-lucide="clock" class="w-3.5 h-3.5"></i></div>`;
+                    statusText = `<span class="text-xs text-slate-400 font-medium bg-slate-50 px-2 py-0.5 rounded">Pendiente</span>`;
+                }
+
+                itemDiv.innerHTML = `
+                    <div class="absolute left-0 transform -translate-x-[21px] mt-1">
+                        ${checkIcon}
+                    </div>
+                    <div class="flex-1">
+                        <h5 class="text-sm font-semibold text-slate-700">${act.originalHeader}</h5>
+                        <div class="mt-1">${statusText}</div>
+                    </div>
+                `;
+                listContainer.appendChild(itemDiv);
+            });
+
+            document.getElementById('modal-detalle').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('modal-detalle').classList.add('hidden');
+        }
+    </script>
+
+</body></html>
